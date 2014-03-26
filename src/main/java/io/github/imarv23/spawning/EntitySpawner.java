@@ -1,4 +1,4 @@
-package io.github.imarv.spawning;
+package io.github.imarv23.spawning;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;

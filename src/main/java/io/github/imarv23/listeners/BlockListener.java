@@ -6,7 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-import io.github.imarv.spawning.*;
+import io.github.imarv23.spawning.SheepSpawner;
 
 /**
  * A Block listener that listens for certain blocks to be placed
