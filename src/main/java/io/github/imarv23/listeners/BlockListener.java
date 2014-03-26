@@ -1,5 +1,6 @@
 package io.github.imarv23.listeners;
 
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.Listener;
@@ -37,7 +38,12 @@ public class BlockListener implements Listener {
 			this.shSpawner = new SheepSpawner(b, e.getPlayer());
 			if(this.shSpawner.checkIfSheep())
 			{
-				this.shSpawner.spawnSheep();
+				if(this.shSpawner.getDyeColor() == DyeColor.WHITE)
+				{
+					this.shSpawner.spawnSheep();
+				}else{
+					this.shSpawner.spawnSheepCustomColor();
+				}
 			}
 		}
 	}

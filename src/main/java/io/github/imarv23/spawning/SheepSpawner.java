@@ -1,10 +1,13 @@
 package io.github.imarv23.spawning;
 
+import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Sheep;
+import org.bukkit.material.Wool;
 
 /**
  * Subclass of EntitySpawner can check for sheep structures and is able to spawn a sheep
@@ -75,16 +78,43 @@ public class SheepSpawner extends EntitySpawner{
 	}
 	
 	/**
-	 * Will spawn sheeps with custom colors
+	 * Returns the color of the block that decides the color of the sheep (the closest one to the head)
 	 * 
-	 * To be done
+	 * @return returns the color of the closest wool block
+	 */
+	public DyeColor getDyeColor()
+	{
+		Wool w = (Wool) this.structureBlock1;
+		return w.getColor();
+	}
+	
+	/**
+	 * Will spawn sheeps with custom colors
 	 * 
 	 * @return returns true if spawning the sheep was successful, returns false otherwise
 	 */
 	public boolean spawnSheepCustomColor()
 	{
+		if(this.isSpawnPossible())
+		{
+			Wool w = (Wool) this.structureBlock1;
+			DyeColor color = w.getColor();
+			
+			Location l = this.structureBlock1.getLocation();
+			
+			this.pump.setType(Material.AIR);
+			this.structureBlock1.setType(Material.AIR);
+			this.structureBlock2.setType(Material.AIR);
+			
+			Sheep sheep = (Sheep) this.player.getWorld().spawnEntity(l, EntityType.SHEEP);
+			sheep.setColor(color);
+			
+			return true;
+		}
+		
 		return false;
 	}
+	
 	
 	/**
 	 * Checks if there is a "sheep-structure"
