@@ -84,7 +84,8 @@ public class SheepSpawner extends EntitySpawner{
 	 */
 	public DyeColor getDyeColor()
 	{
-		Wool w = (Wool) this.structureBlock1.getState();
+		Block b = this.structureBlock1;
+		Wool w = (Wool)b.getState().getData();
 		return w.getColor();
 	}
 	
@@ -97,7 +98,7 @@ public class SheepSpawner extends EntitySpawner{
 	{
 		if(this.isSpawnPossible())
 		{
-			Wool w = (Wool) this.structureBlock1.getState();
+			Wool w = (Wool) this.structureBlock1.getState().getData();
 			DyeColor color = w.getColor();
 			
 			Location l = this.structureBlock1.getLocation();
