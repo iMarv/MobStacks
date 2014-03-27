@@ -1,12 +1,14 @@
 package io.github.imarv23.listeners;
 
+import io.github.imarv23.spawning.SheepSpawner;
+
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-import io.github.imarv23.spawning.SheepSpawner;
 
 /**
  * A Block listener that listens for certain blocks to be placed
@@ -25,6 +27,7 @@ public class BlockListener implements Listener {
 	 * 
 	 * @param e BlockPlaceEvent
 	 */
+	
 	@EventHandler
 	public void onBlockPlace(BlockPlaceEvent e)
 	/*
@@ -37,7 +40,12 @@ public class BlockListener implements Listener {
 			this.shSpawner = new SheepSpawner(b, e.getPlayer());
 			if(this.shSpawner.checkIfSheep())
 			{
-				this.shSpawner.spawnSheep();
+				if(this.shSpawner.getDyeColor() == DyeColor.WHITE)
+				{
+					this.shSpawner.spawnSheep();
+				}else{
+					this.shSpawner.spawnSheepCustomColor();
+				}
 			}
 		}
 	}

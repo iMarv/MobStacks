@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * Plugin that spawns animals like snowmen by building structures
  * 
- * @author Marv
+ * @author iMarv23
  *
  */
 public final class MobStacks extends JavaPlugin {
