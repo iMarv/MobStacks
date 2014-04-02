@@ -3,6 +3,7 @@ package io.github.imarv23.spawning;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 /**
@@ -14,10 +15,16 @@ import org.bukkit.entity.Player;
 public class EntitySpawner {
 	
 	protected Player pl;
+	protected FileConfiguration conf;
 	
-	public EntitySpawner(Player p)
+	/**
+	 * Constructor
+	 * @param p Player
+	 */
+	public EntitySpawner(Player p, FileConfiguration c)
 	{
 		this.pl = p;
+		this.conf = c;
 	}
 	
 	/**
@@ -49,8 +56,5 @@ public class EntitySpawner {
 
 		return b;
 	}
-	
-	
-	
-	
+
 }

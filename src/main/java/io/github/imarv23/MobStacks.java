@@ -15,16 +15,23 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public final class MobStacks extends JavaPlugin {
 	
+	/**
+	 * Creates default configuration or loads an existing one.
+	 * Then starts listening for BlockPlaceEvents and RightClickEvents
+	 */
 	@Override
 	public void onEnable()
 	{
 		this.loadConfiguration();
 		
 		PluginManager pm = Bukkit.getPluginManager();
-		pm.registerEvents(new BlockListener(), this);
+		pm.registerEvents(new BlockListener(this.getConfig()), this);
 		pm.registerEvents(new RightClickListener(this.getConfig()), this);
 	}
 	
+	/**
+	 * Creates default configuration or loads an existing one
+	 */
 	private void loadConfiguration()
 	{
 		this.createDefaultConfig();
@@ -32,9 +39,13 @@ public final class MobStacks extends JavaPlugin {
 		this.saveConfig();
 	}
 	
+	/**
+	 * Creates the default configuration
+	 */
 	private void createDefaultConfig()
 	{
 		this.getConfig().addDefault("Pig.Sacrifice", 5);
+		this.getConfig().addDefault("Cow.Sacrifice", 4);
 	}
 	
 	

@@ -4,6 +4,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
@@ -28,9 +29,9 @@ public class SheepSpawner extends EntitySpawner{
 	 * @param b Originally placed Block
 	 * @param p Player who placed the block
 	 */
-	public SheepSpawner(Block b, Player p)
+	public SheepSpawner(Block b, Player p, FileConfiguration conf)
 	{
-		super(p);
+		super(p, conf);
 		this.pump 	= b;
 	}
 	
