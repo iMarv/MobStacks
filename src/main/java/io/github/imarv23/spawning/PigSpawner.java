@@ -1,20 +1,25 @@
 package io.github.imarv23.spawning;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class PigSpawner extends RightClickSpawner {
 	
-	private int sacrifice;
-	
-	public PigSpawner(Player p, int s)
+	/**
+	 * Constructor, initiates the constructor of RightClickSpawner and saves the sacrifice
+	 * @param p Player
+	 */
+	public PigSpawner(Player p, FileConfiguration conf)
 	{
-		super(p);
-		this.sacrifice = s;
+		super(p, conf);
 	}
 	
+	/**
+	 * Spawns a pig and removes the structure
+	 */
 	public void spawnPig()
 	{
 		if(this.struct != null)
@@ -25,8 +30,11 @@ public class PigSpawner extends RightClickSpawner {
 		}
 	}
 	
+	/**
+	 * Removes the sacrifice from the players inventory
+	 */
 	private void paySacrifice()
 	{
-		this.pl.getInventory().removeItem(new ItemStack(Material.PORK, this.sacrifice));
+		this.pl.getInventory().removeItem(new ItemStack(Material.PORK, this.conf.getInt("Pig.Sacrifice")));
 	}
 }

@@ -5,6 +5,7 @@ import io.github.imarv23.spawning.SheepSpawner;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -20,7 +21,13 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 public class BlockListener implements Listener {
 
-	SheepSpawner shSpawner;
+	private SheepSpawner shSpawner;
+	private FileConfiguration conf;
+	
+	public BlockListener(FileConfiguration conf)
+	{
+		this.conf = conf;
+	}
 	
 	/**
 	 * Main method that listens for placed blocks and is spawning the animals
@@ -37,7 +44,7 @@ public class BlockListener implements Listener {
 		Block b = e.getBlockPlaced();
 		if(b.getType() == Material.PUMPKIN)
 		{
-			this.shSpawner = new SheepSpawner(b, e.getPlayer());
+			this.shSpawner = new SheepSpawner(b, e.getPlayer(), this.conf);
 			if(this.shSpawner.checkIfSheep())
 			{
 				if(this.shSpawner.getDyeColor() == DyeColor.WHITE)
