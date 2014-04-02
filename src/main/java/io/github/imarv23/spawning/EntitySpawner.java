@@ -3,6 +3,7 @@ package io.github.imarv23.spawning;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
 
 /**
  * 
@@ -12,12 +13,11 @@ import org.bukkit.block.BlockFace;
  */
 public class EntitySpawner {
 	
-	/**
-	 * Empty constructor, may get a function later
-	 */
-	public EntitySpawner()
+	protected Player pl;
+	
+	public EntitySpawner(Player p)
 	{
-		
+		this.pl = p;
 	}
 	
 	/**

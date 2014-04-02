@@ -31,8 +31,8 @@ public class SheepSpawner extends EntitySpawner{
 	 */
 	public SheepSpawner(Block b, Player p)
 	{
+		super(p);
 		this.pump 	= b;
-		this.player = p;
 	}
 	
 	/**
