@@ -19,7 +19,6 @@ import org.bukkit.material.Wool;
 public class SheepSpawner extends EntitySpawner{
 	
 	private Block 	pump;
-	private Player 	player;
 	
 	private Block structureBlock1, structureBlock2;
 	
@@ -31,8 +30,8 @@ public class SheepSpawner extends EntitySpawner{
 	 */
 	public SheepSpawner(Block b, Player p)
 	{
+		super(p);
 		this.pump 	= b;
-		this.player = p;
 	}
 	
 	/**
@@ -72,7 +71,7 @@ public class SheepSpawner extends EntitySpawner{
 			this.structureBlock1.setType(Material.AIR);
 			this.structureBlock2.setType(Material.AIR);
 			
-			this.player.getWorld().spawnEntity(l, EntityType.SHEEP);
+			this.pl.getWorld().spawnEntity(l, EntityType.SHEEP);
 		}
 		return false;
 	}
@@ -107,7 +106,7 @@ public class SheepSpawner extends EntitySpawner{
 			this.structureBlock1.setType(Material.AIR);
 			this.structureBlock2.setType(Material.AIR);
 			
-			Sheep sheep = (Sheep) this.player.getWorld().spawnEntity(l, EntityType.SHEEP);
+			Sheep sheep = (Sheep) this.pl.getWorld().spawnEntity(l, EntityType.SHEEP);
 			sheep.setColor(color);
 			
 			return true;
